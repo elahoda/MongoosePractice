@@ -7,17 +7,13 @@ const connect = mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
 connect.then(() => {
   console.log("Connected correctly to server");
 
-  const newCampsite = new Campsite({
+  Campsite.create({
     name: "React Lake Campground",
     description: "test",
-  });
-
-  newCampsite
-    .save()
+  })
     .then((campsite) => {
       console.log(campsite);
       return Campsite.find();
